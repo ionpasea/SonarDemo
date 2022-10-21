@@ -39,7 +39,7 @@ commands:
             -Dsonar.sources=<< parameters.sonar_sources >> \
             -Dsonar.projectKey=<< parameters.sonar_projectKey >> \
             -Dsonar.login=<< parameters.sonar_login >>
-            url="http://rocasinc.com:9000/api/measures/component?metricKeys=violations&component=HelloWorld"            
+            url="http://rocasinc.com:9000/api/measures/component?metricKeys=violations&component=SonarDemo"            
             vul=$(curl -sX GET -u squ_99b453521d8104875d4e478ec486a7e14a44daa4: ${url})
             no_vul=$(echo ${vul} | jq -r .component.measures | jq -r .[0].value)
             
@@ -65,8 +65,8 @@ jobs:
       - check-code-quality:
             sonar_server_url: 'http://rocasinc.com:9000'
             sonar_login: 'squ_99b453521d8104875d4e478ec486a7e14a44daa4'
-            sonar_projectKey: 'HelloWorld'
-            sonar_sources: './HelloWorld'
+            sonar_projectKey: 'SonarDemo'
+            sonar_sources: './SonarDemo'
         
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
